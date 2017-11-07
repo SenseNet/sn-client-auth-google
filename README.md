@@ -1,4 +1,6 @@
 # sn-client-auth-google
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/SenseNet/sn-client-auth-google.svg)](https://greenkeeper.io/)
 [![Gitter chat](https://img.shields.io/gitter/room/SenseNet/SN7ClientAPI.svg?style=flat)](https://gitter.im/SenseNet/SN7ClientAPI)
 [![Build Status](https://travis-ci.org/SenseNet/sn-client-auth-google.svg?branch=master)](https://travis-ci.org/SenseNet/sn-client-auth-google)
 [![codecov](https://codecov.io/gh/SenseNet/sn-client-auth-google/branch/master/graph/badge.svg)](https://codecov.io/gh/SenseNet/sn-client-auth-google)
