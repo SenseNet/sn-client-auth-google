@@ -18,10 +18,7 @@
   },
   "files": [
     "dist",
-    "src",
-    "test",
-    "documentation",
-    "coverage"
+    "src"
   ],
   "repository": {
     "type": "git",
@@ -37,6 +34,9 @@
     "JWT",
     "Login"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Sense/Net <snteam@sensenet.com> (http://sensenet.com/)",
   "license": "GPL-2.0",
   "bugs": {
@@ -59,7 +59,7 @@
   },
   "homepage": "https://github.com/SenseNet/sn-client-auth-google#readme",
   "dependencies": {
-    "@sensenet/authentication-jwt": "^1.0.0-development.3"
+    "@sensenet/authentication-jwt": "^1.0.0-development.4"
   },
   "config": {
     "commitizen": {
@@ -73,11 +73,11 @@
     "@types/mocha": "2.2.44",
     "chai": "^4.1.2",
     "codecov": "^3.0.0",
-    "jsdom": "^11.3.0",
-    "mocha": "^4.0.1",
+    "jsdom": "^11.6.2",
+    "mocha": "^4.1.0",
     "nyc": "^11.0.2",
     "rimraf": "^2.6.2",
-    "tslint": "^5.8.0",
-    "typescript": "^2.6.1"
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2"
   }
 }
