@@ -1,8 +1,8 @@
 {
   "name": "@sensenet/authentication-google",
-  "version": "1.0.0-development.1",
+  "version": "1.0.0-development.2",
   "description": "Client-side Google authentication provider for sensenet ECM",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "precommit": "npm run test",
     "commit": "git-cz",
@@ -66,7 +66,7 @@
       "path": "sensenet-kfi-cz-conventional-changelog"
     }
   },
-  "typings": "./dist/src/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "devDependencies": {
     "@types/chai": "4.0.10",
     "@types/jsdom": "^11.0.4",
