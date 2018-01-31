@@ -26,7 +26,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
         repo.dispose();
     });
 
-    describe("#GetGoogleLoginUrl()", () => {
+    describe("#getGoogleLoginUrl()", () => {
         it("returns a valid Google Login URl", () => {
             const otherOauth = addGoogleAuth(jwtService, {
                 clientId: "TestclientId",
@@ -34,12 +34,12 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
                 scope: ["profile", "email"],
             });
             const expectedUrl = "https://accounts.google.com/o/oauth2/v2/auth?response_type=id_token&redirect_uri=https%3A%2F%2Ftest-redirect-uri&scope=profile%20email&client_id=TestclientId&nonce=";
-            expect(otherOauth.GetGoogleLoginUrl().indexOf(expectedUrl)).to.be.eq(0);
+            expect(otherOauth.getGoogleLoginUrl().indexOf(expectedUrl)).to.be.eq(0);
         });
 
-        it("should return the correst id_token", () => {
+        it("should return the correct id_token", () => {
             const l = { hash: "#id_token=testToken&prop=foo&bar=baz" } as Location;
-            const token = oauth.GetGoogleTokenFromUri(l);
+            const token = oauth.getGoogleTokenFromUri(l);
             expect(token).to.be.eq("testToken");
         });
     });
@@ -47,7 +47,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
     describe("#GetGoogleTokenFromUri()", () => {
         it("should return null if no id_token provided", () => {
             const l = { hash: "#access_token=testToken&prop=foo&bar=baz" } as Location;
-            const token = oauth.GetGoogleTokenFromUri(l);
+            const token = oauth.getGoogleTokenFromUri(l);
             expect(token).to.be.eq(null);
         });
     });
@@ -132,7 +132,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
                 };
             };
             (window.document as any).body = { appendChild: (...args: any[]) => { /** */ }, removeChild: (...args: any[]) => { /** */ } };
-            oauth["getTokenSilent"](oauth.GetGoogleLoginUrl()).then((result) => {
+            oauth["getTokenSilent"](oauth.getGoogleLoginUrl()).then((result) => {
                 done("Should have failed");
             }).catch((err) => {
                 expect(err.message).to.be.eq("Token not found");
@@ -162,7 +162,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
                 };
             };
             (window.document as any).body = { appendChild: (...args: any[]) => { /** */ }, removeChild: (...args: any[]) => { /** */ } };
-            oauth["getTokenSilent"](oauth.GetGoogleLoginUrl()).then((result) => {
+            oauth["getTokenSilent"](oauth.getGoogleLoginUrl()).then((result) => {
                 done("Should have failed");
             }).catch((err) => {
                 expect(err.message).to.be.eq("Token not found");
@@ -194,7 +194,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
 
             let hasIframeRemoved = false;
             (window.document as any).body = { appendChild: (...args: any[]) => { /** */ }, removeChild: (...args: any[]) => { hasIframeRemoved = true; } };
-            oauth["getTokenSilent"](oauth.GetGoogleLoginUrl()).then((result) => {
+            oauth["getTokenSilent"](oauth.getGoogleLoginUrl()).then((result) => {
                 expect(oauth["iframe"]).to.be.eq(undefined);
                 expect(hasIframeRemoved).to.be.eq(true);
                 done();
@@ -214,7 +214,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
 
     describe("#getTokenFromPrompt()", () => {
         it("should return the valid token object and close popup", (done: MochaDone) => {
-            const popupLocationHref = oauth.GetGoogleLoginUrl();
+            const popupLocationHref = oauth.getGoogleLoginUrl();
             let isPopupClosed = false;
 
             (global as any).window = {
@@ -252,7 +252,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
         });
 
         it("should fail when a popup has been closed before getting the token", (done: MochaDone) => {
-            const popupLocationHref = oauth.GetGoogleLoginUrl();
+            const popupLocationHref = oauth.getGoogleLoginUrl();
 
             (global as any).window = {
                 open: () => {

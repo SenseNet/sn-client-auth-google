@@ -74,7 +74,7 @@ export class GoogleOauthProvider implements IOauthProvider {
                 if (this.popup && this.popup.window) {
                     try {
                         if (this.popup.window.location.href !== loginReqUrl) {
-                            const token = this.GetGoogleTokenFromUri(this.popup.window.location);
+                            const token = this.getGoogleTokenFromUri(this.popup.window.location);
                             if (token) {
                                 resolve(token);
                                 this.popup.close();
@@ -124,7 +124,7 @@ export class GoogleOauthProvider implements IOauthProvider {
                     timeoutMs: 500,
                 }).Run();
 
-                const iframeToken = location && this.GetGoogleTokenFromUri(location);
+                const iframeToken = location && this.getGoogleTokenFromUri(location);
                 iframeToken ? resolve(iframeToken) : reject(Error("Token not found"));
                 window.document.body.removeChild(this.iframe);
                 this.iframe = undefined as any;
@@ -142,7 +142,7 @@ export class GoogleOauthProvider implements IOauthProvider {
      */
     public async getToken(): Promise<string> {
 
-        const loginReqUrl = this.GetGoogleLoginUrl();
+        const loginReqUrl = this.getGoogleLoginUrl();
         try {
             return await this.getTokenSilent(loginReqUrl);
         } catch (error) {
@@ -155,7 +155,7 @@ export class GoogleOauthProvider implements IOauthProvider {
      * Gets a Google OAuth2 Login window URL based on the provider options
      * @returns {string} the generated Url
      */
-    public GetGoogleLoginUrl(): string {
+    public getGoogleLoginUrl(): string {
         return `https://accounts.google.com/o/oauth2/v2/auth` +
             `?response_type=id_token` +
             `&redirect_uri=${encodeURIComponent(this.options.redirectUri)}` +
@@ -169,7 +169,7 @@ export class GoogleOauthProvider implements IOauthProvider {
      * @param { Location } uri The Location uri with the hashed id_token to be extracted
      * @returns { string | null } The extracted id_token
      */
-    public GetGoogleTokenFromUri(uri: Location): string | null {
+    public getGoogleTokenFromUri(uri: Location): string | null {
         const tokenSegmentPrefix = "#id_token=";
         const tokenSegment = uri.hash.split("&").find((segment) => segment.indexOf(tokenSegmentPrefix) === 0);
         if (tokenSegment) {
