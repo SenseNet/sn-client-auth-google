@@ -1,6 +1,6 @@
 {
   "name": "@sensenet/authentication-google",
-  "version": "1.0.0-development.3",
+  "version": "1.0.0-development.4",
   "description": "Client-side Google authentication provider for sensenet ECM",
   "main": "dist/index.js",
   "scripts": {

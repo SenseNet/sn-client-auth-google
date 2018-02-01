@@ -51,6 +51,7 @@ export class GoogleOauthProvider implements IOauthProvider {
             {
                 method: "POST",
                 body: JSON.stringify({ token }),
+                credentials: "include",
             });
         if (request.ok) {
             const loginResponse: ILoginResponse = await request.json();
