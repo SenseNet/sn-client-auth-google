@@ -61,7 +61,7 @@ export class GoogleOauthProvider implements IOauthProvider {
         }
     }
 
-    private popup: Window | null;
+    private popup!: Window | null;
 
     /**
      * Gets the Token from a child window.
@@ -94,7 +94,7 @@ export class GoogleOauthProvider implements IOauthProvider {
         });
     }
 
-    private iframe: HTMLIFrameElement;
+    private iframe!: HTMLIFrameElement;
 
     /**
      * Tries to retrieve an id_token w/o user interaction

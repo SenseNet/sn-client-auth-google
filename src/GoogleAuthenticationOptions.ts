@@ -5,7 +5,7 @@ export class GoogleAuthenticationOptions {
     /**
      * Defines the Redirect Uri. Will fall back to 'window.location.origin', if not provided
      */
-    public redirectUri: string;
+    public redirectUri!: string;
     /**
      * Scope settings for Google Oauth
      * Visit the following link to read more about Google Scopes:
@@ -15,7 +15,7 @@ export class GoogleAuthenticationOptions {
     /**
      * Your application's ClientId, provided by Google
      */
-    public clientId: string;
+    public clientId!: string;
 
     constructor(options: Partial<GoogleAuthenticationOptions> & {clientId: string}) {
         if (!options.redirectUri) {
