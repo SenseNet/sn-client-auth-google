@@ -139,7 +139,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
                 done();
             });
 
-            oauth["iframe"].onload({} as any);
+            (oauth["iframe"] as any).onload({} as any);
         });
 
         it("should fail when no Token found", (done: MochaDone) => {
@@ -169,7 +169,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
                 done();
             });
 
-            oauth["iframe"].onload({} as any);
+            (oauth["iframe"] as any).onload({} as any);
         });
 
         it("getTokenSilent() should return token and clean up iframe", (done: MochaDone) => {
@@ -200,7 +200,7 @@ export const oauthProviderTests = describe("GoogleOauthProvider", () => {
                 done();
             }).catch((err) => done(err));
 
-            oauth["iframe"].onload({
+            (oauth["iframe"] as any).onload({
                 srcElement: {
                     contentDocument: {
                         location: {
