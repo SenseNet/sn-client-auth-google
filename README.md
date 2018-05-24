@@ -9,6 +9,12 @@
 
 This package contains a client-side Google Oauth2 authentication provider for sensenet ECM.
 
+## Installation
+
+```shell
+npm install @sensenet/authentication-google
+```
+
 ## Usage
 
 ### Prerequisites
